@@ -1,9 +1,6 @@
-name: Manually Deploy to Heroku
+name: Workflow Heroku Deploy
 
-on:
-  workflow_dispatch:
-    branches:
-      - "heroku"
+on: workflow_dispatch
 
 jobs:
   deploy:
@@ -18,6 +15,8 @@ jobs:
           usedocker: true
           docker_heroku_process_type: web
           stack: "container"
-          region: "us"
+          region: "eu"
         env:
           HD_CONFIG_FILE_URL: ${{secrets.CONFIG_FILE_URL}}
+          HD_HEROKU_APP_NAME: ${{secrets.HEROKU_APP_NAME}}
+          HD_HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
